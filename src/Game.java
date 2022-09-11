@@ -5,10 +5,11 @@ enum CellStatus {
 }
 
 class Cell {
-    CellStatus[][] cell = new CellStatus[3][3];
+    int row = 3, col = 3;
+    CellStatus[][] cell = new CellStatus[row][col];
     Cell() {
-        for(int i = 0; i < 3; i++)
-            for(int j = 0; j < 3; j++)
+        for(int i = 0; i < row; i++)
+            for(int j = 0; j < col; j++)
                 cell[i][j] = CellStatus.EMPTY;
     }
     void input(int who) {
@@ -36,8 +37,9 @@ class Cell {
 
 class Board {
     void display(Cell ele) {
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
+        int row = 3, col = 3;
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
                 if(ele.cell[i][j] == CellStatus.O) System.out.print("[O]");
                 if(ele.cell[i][j] == CellStatus.X) System.out.print("[X]");
                 if(ele.cell[i][j] == CellStatus.EMPTY) System.out.print("[ ]");
@@ -49,11 +51,12 @@ class Board {
 
 
 public class Game{
+    static int row = 3, col = 3;
     static CellStatus check(Cell ele) {
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < row; i++) {
             if(ele.cell[i][0] == ele.cell[i][1] && ele.cell[i][2] == ele.cell[i][1] && ele.cell[i][1] != CellStatus.EMPTY) return ele.cell[i][0];
         }
-        for(int j = 0; j < 3; j++) {
+        for(int j = 0; j < col; j++) {
             if(ele.cell[0][j] == ele.cell[1][j] && ele.cell[1][j] == ele.cell[2][j] && ele.cell[2][j] != CellStatus.EMPTY) return ele.cell[2][j];
         }
         if(ele.cell[0][0] == ele.cell[1][1] && ele.cell[2][2] == ele.cell[1][1] && ele.cell[1][1] != CellStatus.EMPTY) return ele.cell[0][0];
