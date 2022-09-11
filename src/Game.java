@@ -17,6 +17,7 @@ class Cell {
         Scanner scanner = new Scanner(System.in);
         int x = scanner.nextInt(), y = scanner.nextInt();
         if(x < 0 || y < 0 || x > 2 || y > 2 || cell[x][y] != CellStatus.EMPTY) {
+            System.out.println("Invalid positition! Retry");
             input(who);
             return;
         }
